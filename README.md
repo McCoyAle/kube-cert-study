@@ -34,4 +34,4 @@ The Certified Kubernetes Security Specialist Exam is one of the newer Kubernetes
 
 For more information regarding other certifications offered for other Cloud Native and Linux Based solutions, you can visit the Linux Foundation [Training](https://training.linuxfoundation.org/) and [Certifications](https://training.linuxfoundation.org/certification-catalog/) pages. 
 
-In addition, you can view more info about Open Source Training [here](https://training.linuxfoundation.org/open-source-best-practice/). Happy Clouding!
+In addition, you can view more info about Open Source Training [here](https://training.linuxfoundation.org/open-source-best-practice/). Happy Clouding!sersercmis
