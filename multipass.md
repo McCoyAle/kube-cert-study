@@ -13,8 +13,8 @@ The steps for MacOS were are listed under the assumption that you have [Brew ins
 For this scenario we are going to utilize MicroK8s for the Kubernetes installation. You can also use K3s or toy around with the lastest upstream Kubernetes release. For resource consumption purposes coupled with wanting something that maintains similar functionality to upstream Kubernetes releases, Microk8s was the best option.
 
 1. brew install ubuntu/microk8s/microk8s
-..* sudo rm -rf /Library/Developer/CommandLineTools
-..* sudo xcode-select --install
+  * sudo rm -rf /Library/Developer/CommandLineTools
+  * sudo xcode-select --install
 2. microk8s install
 
 
@@ -22,6 +22,6 @@ For this scenario we are going to utilize MicroK8s for the Kubernetes installati
 
 ### Linux
 
-## Creationg Your First Cluster
+## Creating Your Multi-Node Cluster
 
 ## For Additional Help
