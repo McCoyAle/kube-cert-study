@@ -1,5 +1,5 @@
 # Kubernetes Certification Study Guides
-A repository to host files for Kubernetes based exams. The files are grouped into directories based on the certification exam. The information published in this repository is based off of the current latest version which is v1.28.
+A repository to host files for Kubernetes based exams. The files are grouped into directories based on the certification exam. The information published in this repository is based off of the current latest version which is v1.28. If you do not have a cluster readily available to you, please check out the [Multipass](multipass.md) document in this repository regarding how you can utilize it to configure your workstation as a local cluster. 
 
 ## Certified Kubernetes Administrator
 The Certified Kubernetes Administrator Exam ensures that Kubernetes Administrators maintain relevant knowledge regarding the lastest version of Kubernetes. You can find more information about the certification exam [here](https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/). If you are looking for a more structured learning path developed by the Linux Foundation, you can view that information [here](https://training.linuxfoundation.org/wp-content/uploads/2023/07/CKA_CurriculumPath_Jul23.pdf). 

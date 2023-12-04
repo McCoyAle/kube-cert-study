@@ -1,0 +1,2 @@
+# Build a local Kubernetes Cluster with Multipass
+Multipass is a CLI tool, build by Canonical, in order to generate cloud-systel Ubuntu VMs on a Linux, MacOS or Windows machine. Depending on the size of the underlying infrastructure you can quickly build out a local mini-cloud. This is a great way to practice development with Kubernetes ecosystem on a budget. Other options include AWS, Azure, GCP, IBM Cloud and a host of other platforms that you might otherwise have to pay for. My motto is do what is best for your learning experience!
