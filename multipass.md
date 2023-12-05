@@ -7,7 +7,7 @@ In my current setup, I am using MacOS on a M2 device. So understand that there m
 ### MACOS 
 The steps for MacOS were are listed under the assumption that you have [Brew installed](https://brew.sh/). If you do not, you can see what this package manager is about and download it to simplify your life. Thank me later! If you would rather use the install manager, then you can visit [this page](https://multipass.run/docs/installing-on-macos) for more guidance.
 
-1. brew install --cask multipass
+1. `brew install --cask multipass`
 
 ## MicroK8s Installation
 For this scenario we are going to utilize MicroK8s for the Kubernetes installation. You can also use K3s or toy around with the lastest upstream Kubernetes release. For resource consumption purposes coupled with wanting something that maintains similar functionality to upstream Kubernetes releases, Microk8s was the best option.
