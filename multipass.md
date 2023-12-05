@@ -12,15 +12,15 @@ The steps for MacOS were are listed under the assumption that you have [Brew ins
 ## MicroK8s Installation
 For this scenario we are going to utilize MicroK8s for the Kubernetes installation. You can also use K3s or toy around with the lastest upstream Kubernetes release. For resource consumption purposes coupled with wanting something that maintains similar functionality to upstream Kubernetes releases, Microk8s was the best option.
 
-1. `brew install ubuntu/microk8s/microk8s`
+1. ```brew install ubuntu/microk8s/microk8s
     <!--- Install Microk8s on your local workstation or operating system --->
-2. `microk8s install`
-3. `microk8s status`
+2. microk8s install
+3. microk8s status
     <!--- You will see a list of addons available to enable on your cluster --->
-4. `microk8s enable <addon>`
+4. microk8s enable <addon>
     <!--- Run this command for each addon you would like to enable in your cluster. In this scenario we are enabling the DNS, Istio service, Kube Dashboard, and a private registry. --->
-5. `microk8s disable <addon>`
-    <!--- This command can be used in order to disable a service that you have enabled. --->
+5. microk8s disable <addon>
+    <!--- This command can be used in order to disable a service that you have enabled. --->```
 
 ### Windows OS
 For Windows operating systems, you can view the following [document](https://microk8s.io/docs/install-windows) for installation. 
