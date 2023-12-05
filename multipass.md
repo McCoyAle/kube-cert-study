@@ -14,14 +14,14 @@ For this scenario we are going to utilize MicroK8s for the Kubernetes installati
 
 ```
 1. brew install ubuntu/microk8s/microk8s
-    <!--- Install Microk8s on your local workstation or operating system --->
+    * Install Microk8s on your local workstation or operating system 
 2. microk8s install
 3. microk8s status
-    <!--- You will see a list of addons available to enable on your cluster --->
+    * You will see a list of addons available to enable on your cluster 
 4. microk8s enable <addon>
-    <!--- Run this command for each addon you would like to enable in your cluster. In this scenario we are enabling the DNS, Istio service, Kube Dashboard, and a private registry. --->
+    * Run this command for each addon you would like to enable in your cluster. In this scenario we are enabling the DNS, Istio service, Kube Dashboard, and a private registry.
 5. microk8s disable <addon>
-    <!--- This command can be used in order to disable a service that you have enabled. --->
+    * This command can be used in order to disable a service that you have enabled. 
 ```
 
 ### Windows OS
