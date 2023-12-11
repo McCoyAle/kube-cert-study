@@ -34,12 +34,15 @@ During the Microk8s installation process we created a singular, or control plane
 Microk8s provides the ability to enable standard services to extend or add additional cloud native capabilities in your cluster. Follow the below steps to enable add-ons appropriate for your use case. 
 
 1. You can view the following [link](https://microk8s.io/docs/addons) to determine the list of add-ons available or you can execute the following command to view the list in your terminal. 
+    
     `microk8s status`
     
 2. Run this command for each addon you would like to enable in your cluster. In this scenario we are enabling the DNS, Istio service, Kube Dashboard, and a private registry.
+    
     `microk8s enable <addon>`
 
 5. In order to disable addons run the following command below:
+    
     `microk8s disable <addon>`
 
 ## Managing Your Cluster
