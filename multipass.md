@@ -28,7 +28,9 @@ For Windows operating systems, you can view the following [document](https://mic
 For Ubuntu operating systems, you can use the following [document](https://microk8s.io/docs/getting-started) for installation. 
 
 ## Creating Your Multi-Node Cluster
-During the Microk8s installation process we created a singular, or control plane node and/or multipass vm, which runs the Kubernetes services required to ensure our cluster is in a healthy state. 
+During the Microk8s installation process we created a singular, or control plane node and/or multipass vm, which runs the Kubernetes services required to ensure our cluster is in a healthy state. If you run `multipass list` you should see VM instance display. We will use this instance as our control plane node. The cluster still requires additional instances, or worker nodes, to connect to the control plane node. 
+
+![multipass list command output](assets/images)
 
 ## Configuring Add-Ons for Your Cluster
 Microk8s provides the ability to enable standard services to extend or add additional cloud native capabilities in your cluster. Follow the below steps to enable add-ons appropriate for your use case. 
