@@ -30,7 +30,42 @@ For Ubuntu operating systems, you can use the following [document](https://micro
 ## Creating Your Multi-Node Cluster
 During the Microk8s installation process we created a singular, or control plane node and/or multipass vm, which runs the Kubernetes services required to ensure our cluster is in a healthy state. If you run `multipass list` you should see VM instance display. We will use this instance as our control plane node. The cluster still requires additional instances, or worker nodes, to connect to the control plane node. 
 
-![multipass list command output](assets/images)
+![multipass list command output for control plane node](assets/images/control_plane.png)
+
+1. Create two additional instances, or worker nodes, with the following commands:
+
+    `dsd`
+    `dada`
+
+![multipass list command output for worker nodes](assets/images/worker_nodes.png)
+
+2. multipass shell microk8s-vm
+    `sudo snap install multipass` <!--- snap command is used to install software. Here we install multipass to connect nodes in the cluster later. --->
+    `sudo usermod -a -G microk8s ubuntu` <!--- add the ubuntu user to the microk8s group with appropriate permissions to run commands --->
+    `newgrp microk8s` <!--- apply the changes and log the user into the group without having to log out of the shell --->
+    `sudo vi /etc/hosts` <!--- modify the etc/hosts file to map the ip addresses to the domain names of the multipass VMs --->
+        // 192.168.64.3 microk8s-vm
+        // 192.168.64.4 microk8s-vm2
+        // 192.168.64.5 microk8s-vm3
+
+3. multipass shell microk8s-vm2 <!--- the same process on the worker nodes --->
+    `sudo snap install multipass`
+    `sudo snap install microk8s --classic --channel=1.27/stable` <!--- We install microk8s, as the main node was created with microk8s and multipass --->
+    `sudo usermod -a -G microk8s ubuntu`
+    `newgrp microk8s`
+    `sudo vi /etc/hosts`
+        // 192.168.64.3 microk8s-vm
+        // 192.168.64.4 microk8s-vm2
+        // 192.168.64.5 microk8s-vm3
+
+4. multipass shell microk8s-vm3 
+    // Repeat the steps in step 2 on the remaining worker node
+
+### Joining Your Nodes to Your Cluster
+Now that we have created multiple VMs, which represents nodes, we need to join them together so that the orchestration layers is aware of what underlying infrastructure makes up the cluster, to deploy your containerized images to. For more information on this process or if you run into any issues, you can review the following [page](https://microk8s.io/docs/clustering). 
+
+1. 
+
 
 ## Configuring Add-Ons for Your Cluster
 Microk8s provides the ability to enable standard services to extend or add additional cloud native capabilities in your cluster. Follow the below steps to enable add-ons appropriate for your use case. 
