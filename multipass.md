@@ -32,25 +32,25 @@ During the Microk8s installation process we created a singular, or control plane
 
 ![multipass list command output for control plane node](assets/images/control_plane.png)
 
-1. Create two additional instances, or worker nodes, with the following commands:
+1. Create two additional instances, or worker nodes, with the following commands. Feel free to modify resource limits to something appropriate for your work environment.
 
-    `dsd`
-    `dada`
+    `multipass launch --name microk8s-vm2 --cpus 1 --mem 2G --disk 10G`
+    `multipass launch --name microk8s-vm3 --cpus 1 --mem 2G --disk 10G`
 
 ![multipass list command output for worker nodes](assets/images/worker_nodes.png)
 
 2. multipass shell microk8s-vm
-    `sudo snap install multipass` <!--- snap command is used to install software. Here we install multipass to connect nodes in the cluster later. --->
-    `sudo usermod -a -G microk8s ubuntu` <!--- add the ubuntu user to the microk8s group with appropriate permissions to run commands --->
-    `newgrp microk8s` <!--- apply the changes and log the user into the group without having to log out of the shell --->
-    `sudo vi /etc/hosts` <!--- modify the etc/hosts file to map the ip addresses to the domain names of the multipass VMs --->
+    `sudo snap install multipass` // snap command is used to install software. Here we install multipass to connect nodes in the cluster later.
+    `sudo usermod -a -G microk8s ubuntu` // add the ubuntu user to the microk8s group with appropriate permissions to run commands 
+    `newgrp microk8s` // apply the changes and log the user into the group without having to log out of the shell 
+    `sudo vi /etc/hosts` // modify the etc/hosts file to map the ip addresses to the domain names of the multipass VMs 
         // 192.168.64.3 microk8s-vm
         // 192.168.64.4 microk8s-vm2
         // 192.168.64.5 microk8s-vm3
 
-3. multipass shell microk8s-vm2 <!--- the same process on the worker nodes --->
+3. multipass shell microk8s-vm2 //the same process on the worker nodes 
     `sudo snap install multipass`
-    `sudo snap install microk8s --classic --channel=1.27/stable` <!--- We install microk8s, as the main node was created with microk8s and multipass --->
+    `sudo snap install microk8s --classic --channel=1.27/stable` // We install microk8s, as the main node was created with microk8s and multipass 
     `sudo usermod -a -G microk8s ubuntu`
     `newgrp microk8s`
     `sudo vi /etc/hosts`
