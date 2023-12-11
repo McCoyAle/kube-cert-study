@@ -13,15 +13,12 @@ The steps for MacOS were are listed under the assumption that you have [Brew ins
 For this scenario we are going to utilize MicroK8s for the Kubernetes installation. You can also use K3s or toy around with the lastest upstream Kubernetes release. For resource consumption purposes coupled with wanting something that maintains similar functionality to upstream Kubernetes releases, Microk8s was the best option.
 
 ```
-1. brew install ubuntu/microk8s/microk8s
-    * Install Microk8s on your local workstation or operating system 
-2. microk8s install
-3. microk8s status
-    * You will see a list of addons available to enable on your cluster 
-4. microk8s enable <addon>
-    * Run this command for each addon you would like to enable in your cluster. In this scenario we are enabling the DNS, Istio service, Kube Dashboard, and a private registry.
-5. microk8s disable <addon>
-    * This command can be used in order to disable a service that you have enabled. 
+1. Install Microk8s on your local workstation or operating system 
+    // brew install ubuntu/microk8s/microk8s
+2. Create a microk8s vm. You can also pass configuration options for cpu, memory, kubernetes versioning to this command. 
+    // microk8s install
+3. Confirm the status of the new microk8s VM
+    // microk8s status 
 ```
 
 ### Windows OS
@@ -31,5 +28,20 @@ For Windows operating systems, you can view the following [document](https://mic
 For Ubuntu operating systems, you can use the following [document](https://microk8s.io/docs/getting-started) for installation. 
 
 ## Creating Your Multi-Node Cluster
+During the Microk8s installation process we created a singular, or control plane node and/or multipass vm, which runs the Kubernetes services required to ensure our cluster is in a healthy state. 
+
+## Configuring Add-Ons for Your Cluster
+Microk8s provides the ability to enable standard services to extend or add additional cloud native capabilities in your cluster. Follow the below steps to enable add-ons appropriate for your use case. 
+
+1. You can view the following [link](https://microk8s.io/docs/addons) to determine the list of add-ons available or you can execute the following command to view the list in your terminal. 
+    // microk8s status
+    
+2. Run this command for each addon you would like to enable in your cluster. In this scenario we are enabling the DNS, Istio service, Kube Dashboard, and a private registry.
+    // microk8s enable <addon>
+
+5. In order to disable addons run the following command below:
+    // microk8s disable <addon>
+
+## Managing Your Cluster
 
 ## For Additional Help
