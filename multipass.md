@@ -76,7 +76,27 @@ During the Microk8s installation process we created a singular, or control plane
 ### Joining Your Nodes to Your Cluster
 Now that we have created multiple VMs, which represents nodes, we need to join them together so that the orchestration layers is aware of what underlying infrastructure makes up the cluster, to deploy your containerized images to. For more information on this process or if you run into any issues, you can review the following [page](https://microk8s.io/docs/clustering). 
 
-1. 
+1. You will need to join the nodes by first generating a token on the control-plan node. In order to do so, shell into the control plane node:
+    
+    a. `multipass shell microk8s-vm`
+
+2. On the control-plane node run the following command for token retrieval:
+
+    a. `microk8s add node`
+
+3. Shell into the first work node using the command from step 1 of this section, and run the command provided in step 2. Ensure that you use the correct command, as the first is for an additional control-plane node and the second is for a worker node.
+
+    a. `microk8s join 192.168.64.3:25000/ab457d9a2933d63e17db7a738a17135f/846dbb6ca6a4 --worker`
+
+    b. Complete the same steps for each node that you are adding to the cluster. The setup required me to run the add-node command for each node that I was adding to the cluster verse reusing a command. This was due to not being able to reuse the same token.
+
+    ![MicroK8s Join Command](assets/images/join_nodes.png)
+
+4. Confirm that your nodes and running pods are running in a healthy state by running the following commands:
+
+    a. `microk8s kubectl get nodes -o wide` followed by  `microk8s kubectl get pods -A -o wide`
+
+        ![Cluster Nodes and Pods](assets/images/Nodes_Pods_status.png)
 
 
 ## Configuring Add-Ons for Your Cluster
