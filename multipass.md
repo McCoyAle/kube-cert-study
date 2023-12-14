@@ -96,7 +96,7 @@ Now that we have created multiple VMs, which represents nodes, we need to join t
 
     a. `microk8s kubectl get nodes -o wide` followed by  `microk8s kubectl get pods -A -o wide`
 
-        ![Cluster Nodes and Pods](assets/images/Nodes_Pods_status.png)
+    ![Cluster Nodes and Pods](assets/images/Nodes_Pods_status.png)
 
 
 ## Configuring Add-Ons for Your Cluster
