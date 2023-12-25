@@ -133,3 +133,15 @@ In addition, some cloud providers offer what's called a [`bastion host`](https:/
 
 
 ## For Additional Help
+For additional information, use cases, or if you are simply looking to enhance the capabilities of your cluster you can have a look at some of the links listed below. Most of the products associated with this setup have friendly communities and quality documentation. 
+
+[Kubernetes Documentation](https://kubernetes.io/docs/home/)
+The latest versions of Kubernetes list []`kubeadm`](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/) as the standard for deploying kubernetes clusters. Likely, you can configure multipass VMs and utilize kubeadm in order to create and configure your cluster. It's your world!
+
+[MicroK8s Documenation](https://microk8s.io/docs)
+Microk8s is consider as a version of Kubernetes that consumes less resources. Therefore, if you are not working on actual servers or VMs and want to achieve the same outcome without utilizing resources it is ideal.
+
+In addition, there is also [K3s](https://k3s.io/) which is also another lightweight solution for deploying Kubernetes clusters. 
+
+[Multipass Documentation](https://multipass.run/)
+Multipass is a tool for deploying Ubuntu VM instances using [cloud-init](https://cloud-init.io/). If you have a single VM or computer it is ideal for isolating local resources in a way that creates multiple local instances to cluster. 
