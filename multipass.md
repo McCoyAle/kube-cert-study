@@ -117,6 +117,14 @@ Microk8s provides the ability to enable standard services to extend or add addit
 
 By default, the dns addon is configured for networking management. This is how your nodes and applications deployed in the cluster know how to communicate with one another and where to route external traffic. 
 
+6. Since I am using this cluster for studying purposes, we will enable the ingress addon for additional networking functionality. 
+
+    `microk8s enable ingress`
+
+We see in the below capture additional yaml files from some remote repository are applied and deployed to the cluster. 
+
+![Enable Ingress](assets/images/enable_ingress.png)
+
 ## Managing Your Cluster
 The standard cluster setup or configuration allows for you to interact with your cluster via your local workstation. However, if you would like to work from a node within the cluster, then you can shell into the VM using the `shell` command from Step 1 of the join nodes to your cluster section. 
 
