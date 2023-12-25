@@ -140,8 +140,15 @@ In the screen capture below `-o wide` flag is appended to the above command to v
 
 ![Node Status](assets/images/node_status.png)
 
-2. 
+2. Create a Namespace to deploy your workload to
 
+    `microk8s kubectl create ns ingress-test`
+
+Note: Two things to note here, I am using an alias since the microk8s kubectl command is too long. You can create one for yourself using the command below.
+
+`alias mk='microk8s kubectl'`
+
+3. 
 
 
 ## For Additional Help
