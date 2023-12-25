@@ -117,7 +117,7 @@ Microk8s provides the ability to enable standard services to extend or add addit
 
 By default, the dns addon is configured for networking management. This is how your nodes and applications deployed in the cluster know how to communicate with one another and where to route external traffic. 
 
-6. Since I am using this cluster for studying purposes, we will enable the ingress addon for additional networking functionality. 
+6. Since I am using this cluster for studying purposes, we will enable the [ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) addon for additional networking functionality. 
 
     `microk8s enable ingress`
 
@@ -125,10 +125,22 @@ We see in the below capture additional yaml files from some remote repository ar
 
 ![Enable Ingress](assets/images/enable_ingress.png)
 
-## Managing Your Cluster
 The standard cluster setup or configuration allows for you to interact with your cluster via your local workstation. However, if you would like to work from a node within the cluster, then you can shell into the VM using the `shell` command from Step 1 of the join nodes to your cluster section. 
 
 In addition, some cloud providers offer what's called a [`bastion host`](https://en.wikipedia.org/wiki/Bastion_host). Which is a VM or computer that is configured on the network to access to the cluster in a secure way. It is not a node within your cluster and typically hosts a single process such a load balancer to protect the cluster from outside or less secure traffic. In a production environment this is ideal, but for testing purposes now...not so much!
+
+## Deploy A Workload to Test
+In order to test whether or not our cluster is ready to accept and run scheduled workloads we will need to deploy a simple application to the cluster. 
+
+1. Let's check and ensure our cluster is in a healthy state:
+
+    `microk8s kubectl get nodes`
+
+In the screen capture below `-o wide` flag is appended to the above command to visualize additional configuration options for the node. We can see that we are using Ubuntu Linux as the OS image with a kernel version of 5.15. In addition, the cluster is using [containerd](https://containerd.io/) as the [container runtime](https://kubernetes.io/docs/setup/production-environment/container-runtimes/). Containerd is a [CNCF](https://www.cncf.io/projects/) solution and standard runtime within the industry. 
+
+![Node Status](assets/images/node_status.png)
+
+2. 
 
 
 
