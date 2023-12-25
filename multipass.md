@@ -12,6 +12,7 @@ The steps for MacOS were are listed under the assumption that you have [Brew ins
 ## MicroK8s Installation
 For this scenario we are going to utilize MicroK8s for the Kubernetes installation. You can also use K3s or toy around with the lastest upstream Kubernetes release. For resource consumption purposes coupled with wanting something that maintains similar functionality to upstream Kubernetes releases, Microk8s was the best option.
 
+### MAC OS
 ```
 1. Install Microk8s on your local workstation or operating system 
     // brew install ubuntu/microk8s/microk8s
@@ -114,6 +115,13 @@ Microk8s provides the ability to enable standard services to extend or add addit
     
     `microk8s disable <addon>`
 
+By default, the dns addon is configured for networking management. This is how your nodes and applications deployed in the cluster know how to communicate with one another and where to route external traffic. 
+
 ## Managing Your Cluster
+The standard cluster setup or configuration allows for you to interact with your cluster via your local workstation. However, if you would like to work from a node within the cluster, then you can shell into the VM using the `shell` command from Step 1 of the join nodes to your cluster section. 
+
+In addition, some cloud providers offer what's called a [`bastion host`](https://en.wikipedia.org/wiki/Bastion_host). Which is a VM or computer that is configured on the network to access to the cluster in a secure way. It is not a node within your cluster and typically hosts a single process such a load balancer to protect the cluster from outside or less secure traffic. In a production environment this is ideal, but for testing purposes now...not so much!
+
+
 
 ## For Additional Help
