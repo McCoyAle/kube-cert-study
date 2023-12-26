@@ -152,36 +152,33 @@ Note: Two things to note here, I am using an alias since the microk8s kubectl co
 
 3. Deploy a test deployment to your cluster:
 
-    `mk create deployment ing-test --image=httpd --port=80`
+    `mk create deployment ing-test --image=httpd --port=8080`
 
 4. Use the below command to expose your test application:
 
-    `mk expose deployment ing-test`
+    `mk expose deployment ing-test --port=8080 --target-port=8080`
 
 5. You can then use the following command to deploy and ingress resource in the cluster. 
 
-    `mk create -f multipass-yaml/local-ingress.yaml` //this will apply the yaml file from this specific repository
+    `mk create -f multipass-yaml/local-ingress.yaml` //Apply the yaml file from this repository. Feel free to configure your own
 
-4. We can test traffic to the deployment at various levels:
+### Testing Traffic to the Workload
 
-    a. Let's first exec into the pod and run a curl command to confirm the output we should receive.
+1. Let's first exec into the pod and run a curl command to confirm the output we should receive.
 
-        i. `mk exec -it ing-test-697896dff-nh9zk -- /bin/bash`
-        ii. `curl localhost:8080`
+    a. `mk exec -it ing-test-697896dff-nh9zk -- /bin/bash`
+    b. `curl localhost`
 
-    *Note: I needed to change the port from 80 to 8080 due to something internally utilizing this port and displaying succesful attempts that should have failed.* 
+    *Note: I needed to change the port from 80 to 8080 due to something internally utilizing this port and displaying succesful attempts that should have failed. When I did this port 8080 did not work but localhost still worked in my browser* 
 
-    b. You can also curl the pod from your local workstation:
+2. You can also curl the pod from your local workstation:
 
-        i. `mk port-forward pod/ing-test-697896dff-429n6 8080:80` // this forwards port 80 in the container to port 8080 on your localhost
+    a. `mk port-forward pod/ing-test-697896dff-429n6 8080:8080` // this forwards port 8080 in the container to port 8080 on your localhost
+    b. Navigate to your browser @ localhost:8080 //this should work
 
-    c. We can then curl the service to ensure that we receive the same response, while shelled into a node or on your local host. You will need to retrieve the IP and Port address from the service created in step 4. 
+3. We can then curl the service to ensure that we receive the same response, while shelled into a node. You will need to retrieve the IP and Port address from the service created in step 4. 
 
-        i. `curl 10.152.183.164:80` // this is the IP address assigned to the service and the port it has configured.
-
-5. We now need to confirm that our ingress setup is working and accepting traffic.
-
-    a. 
+    a. `curl 10.152.183.164:8080` // this is the IP address assigned to the service and the port it has configured.
 
 ## Troubleshooting
 This section outlines some issues and their respective resolutions that occurred during following these steps for the initial deployment. If you encounter anything different, feel free to submit an issue to this repository along with the resolution steps. 
