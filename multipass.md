@@ -40,15 +40,17 @@ During the Microk8s installation process we created a singular, or control plane
 
 ![multipass list command output for worker nodes](assets/images/worker_nodes.png)
 
-2. multipass shell microk8s-vm
+2. Sehll into your control plane node in order to install multipass and microk8s on the cluster. 
+    
+    a. `multipass shell microk8s-vm`
 
-    a. `sudo snap install multipass` // snap command is used to install software. Here we install multipass to connect nodes in the cluster later.
+    b. `sudo snap install multipass` // snap command is used to install software. Here we install multipass to connect nodes in the cluster later.
 
-    b. `sudo usermod -a -G microk8s ubuntu` // add the ubuntu user to the microk8s group with appropriate permissions to run commands 
+    c. `sudo usermod -a -G microk8s ubuntu` // add the ubuntu user to the microk8s group with appropriate permissions to run commands 
 
-    c. `newgrp microk8s` // apply the changes and log the user into the group without having to log out of the shell 
+    d. `newgrp microk8s` // apply the changes and log the user into the group without having to log out of the shell 
 
-    d. `sudo vi /etc/hosts` // modify the etc/hosts file to map the ip addresses to the domain names of the multipass VMs 
+    e. `sudo vi /etc/hosts` // modify the etc/hosts file to map the ip addresses to the domain names of the multipass VMs 
 
         // 192.168.64.3 microk8s-vm
         // 192.168.64.4 microk8s-vm2
@@ -58,7 +60,7 @@ During the Microk8s installation process we created a singular, or control plane
 
     a. `sudo snap install multipass`
 
-    b. `sudo snap install microk8s --classic --channel=1.27/stable` // We install microk8s, as the main node was created with microk8s and multipass 
+    b. `sudo snap install microk8s --classic --channel=1.28/stable` // We install microk8s, as the main node was created with microk8s and multipass 
 
     c. `sudo usermod -a -G microk8s ubuntu`
 
@@ -66,7 +68,7 @@ During the Microk8s installation process we created a singular, or control plane
 
     e. `sudo vi /etc/hosts`
 
-        // 192.168.64.3 microk8s-vm
+        // m
         // 192.168.64.4 microk8s-vm2
         // 192.168.64.5 microk8s-vm3
 
@@ -83,7 +85,7 @@ Now that we have created multiple VMs, which represents nodes, we need to join t
 
 2. On the control-plane node run the following command for token retrieval:
 
-    a. `microk8s add node`
+    a. `microk8s add-node`
 
 3. Shell into the first work node using the command from step 1 of this section, and run the command provided in step 2. Ensure that you use the correct command, as the first is for an additional control-plane node and the second is for a worker node.
 
@@ -132,7 +134,7 @@ In addition, some cloud providers offer what's called a [`bastion host`](https:/
 ## Deploy A Workload to Test
 In order to test whether or not our cluster is ready to accept and run scheduled workloads we will need to deploy a simple application to the cluster. 
 
-1. Let's check and ensure our cluster is in a healthy state:
+1. Let's check and ensure our cluster is in a healthy state and networking configuration working:
 
     `microk8s kubectl get nodes`
 
@@ -148,8 +150,23 @@ Note: Two things to note here, I am using an alias since the microk8s kubectl co
 
 `alias mk='microk8s kubectl'`
 
-3. 
+3. Deploy a test deployment to your cluster:
 
+    `mk create deployment ing-test --image=httpd --port=80`
+
+4. Use the below command to expose your test application:
+
+    `mk expose deployment ing-test`
+
+5. You can then use the following command to deploy and ingress resource in the cluster. 
+
+    `mk create -f `
+
+## Troubleshooting
+This section outlines some issues and their respective resolutions that occurred during following these steps for the initial deployment. If you encounter anything different, feel free to submit an issue to this repository along with the resolution steps. 
+
+### Calico Networking Deployment Failed
+Initially creating the cluster, Calico networking experience authentication issues resulting in ingress pods and newly created pods unsucessifully deploying. More information on this can be viewed in issue [#7](https://github.com/McCoyAle/kubernetes-materials/issues/7)
 
 ## For Additional Help
 For additional information, use cases, or if you are simply looking to enhance the capabilities of your cluster you can have a look at some of the links listed below. Most of the products associated with this setup have friendly communities and quality documentation. 
