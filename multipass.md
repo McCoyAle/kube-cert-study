@@ -160,7 +160,20 @@ Note: Two things to note here, I am using an alias since the microk8s kubectl co
 
 5. You can then use the following command to deploy and ingress resource in the cluster. 
 
-    `mk create -f `
+    `mk create -f multipass-yaml/local-ingress.yaml` //this will apply the yaml file from this specific repository
+
+4. We can test traffic to the deployment at various levels:
+
+    a. Let's first exec into the pod and run a curl command to confirm the output we should receive.
+
+        i. `mk exec -it ing-test-697896dff-nh9zk -- /bin/bash`
+        ii. `curl localhost`
+
+    b. We can then curl the service to ensure that we receive the same response, while shelled into a node. You will need to retrieve the IP and Port address from the service created in step 4. 
+
+        i. `curl 10.152.183.164:80`
+
+5. 
 
 ## Troubleshooting
 This section outlines some issues and their respective resolutions that occurred during following these steps for the initial deployment. If you encounter anything different, feel free to submit an issue to this repository along with the resolution steps. 
