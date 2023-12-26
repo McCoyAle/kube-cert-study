@@ -180,6 +180,15 @@ Note: Two things to note here, I am using an alias since the microk8s kubectl co
 
     a. `curl 10.152.183.164:8080` // this is the IP address assigned to the service and the port it has configured.
 
+### Validating Storage Configuration (Optional)
+Depending on the specific use case for your cluster, you might want to enable to storage addon to test or practice working with [persistent volumes and persistent volume claims](https://kubernetes.io/docs/concepts/storage/persistent-volumes/). Multipass has a few storage configurations to use, however for testing purposes we will enable the storage class functionality that utilizes the host directory. 
+
+1. Enable this option in microk8s
+
+    a. `mk enable hostpath-storage`
+
+2. 
+
 ## Troubleshooting
 This section outlines some issues and their respective resolutions that occurred during following these steps for the initial deployment. If you encounter anything different, feel free to submit an issue to this repository along with the resolution steps. 
 
