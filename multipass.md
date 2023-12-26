@@ -167,13 +167,21 @@ Note: Two things to note here, I am using an alias since the microk8s kubectl co
     a. Let's first exec into the pod and run a curl command to confirm the output we should receive.
 
         i. `mk exec -it ing-test-697896dff-nh9zk -- /bin/bash`
-        ii. `curl localhost`
+        ii. `curl localhost:8080`
 
-    b. We can then curl the service to ensure that we receive the same response, while shelled into a node. You will need to retrieve the IP and Port address from the service created in step 4. 
+    *Note: I needed to change the port from 80 to 8080 due to something internally utilizing this port and displaying succesful attempts that should have failed.* 
 
-        i. `curl 10.152.183.164:80`
+    b. You can also curl the pod from your local workstation:
 
-5. 
+        i. `mk port-forward pod/ing-test-697896dff-429n6 8080:80` // this forwards port 80 in the container to port 8080 on your localhost
+
+    c. We can then curl the service to ensure that we receive the same response, while shelled into a node or on your local host. You will need to retrieve the IP and Port address from the service created in step 4. 
+
+        i. `curl 10.152.183.164:80` // this is the IP address assigned to the service and the port it has configured.
+
+5. We now need to confirm that our ingress setup is working and accepting traffic.
+
+    a. 
 
 ## Troubleshooting
 This section outlines some issues and their respective resolutions that occurred during following these steps for the initial deployment. If you encounter anything different, feel free to submit an issue to this repository along with the resolution steps. 
