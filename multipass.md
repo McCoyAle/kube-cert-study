@@ -1,16 +1,16 @@
 # Build a local Kubernetes Cluster with Multipass
-[Multipass](https://multipass.run/) is a CLI tool, build by Canonical, in order to generate cloud-systel Ubuntu VMs on a Linux, MacOS or Windows machine. Depending on the size of the underlying infrastructure you can quickly build out a local mini-cloud. This is a great way to practice development with Kubernetes ecosystem on a budget. Other options include [AWS](https://portal.aws.amazon.com/billing/signup?refid=em_127222&redirect_url=https%3A%2F%2Faws.amazon.com%2Fregistration-confirmation#/start/email), [Azure](https://azure.microsoft.com/en-us/free/search/?ef_id=_k_CjwKCAiAjrarBhAWEiwA2qWdCPW1oFMX8yFDQGIUHnvArjt4XP_giNV0HIFIYAl0nSDK6Da6FIPcoxoC2V0QAvD_BwE_k_&OCID=AIDcmmfq865whp_SEM__k_CjwKCAiAjrarBhAWEiwA2qWdCPW1oFMX8yFDQGIUHnvArjt4XP_giNV0HIFIYAl0nSDK6Da6FIPcoxoC2V0QAvD_BwE_k_&gad_source=1&gclid=CjwKCAiAjrarBhAWEiwA2qWdCPW1oFMX8yFDQGIUHnvArjt4XP_giNV0HIFIYAl0nSDK6Da6FIPcoxoC2V0QAvD_BwE), [GCP](https://cloud.google.com/free?utm_source=google&utm_medium=cpc&utm_campaign=na-US-all-en-dr-bkws-all-all-trial-e-dr-1605212&utm_content=text-ad-none-any-DEV_c-CRE_665665924741-ADGP_Hybrid+%7C+BKWS+-+MIX+%7C+Txt_Google+Cloud+Free-KWID_43700077224933019-kwd-886545049102&utm_term=KW_gcp%20free%20account-ST_gcp+free+account&gad_source=1&gclid=CjwKCAiAjrarBhAWEiwA2qWdCD_OFhSy3ihdoKlgLzwWUXV81n_kRJJIXCae-v1ivhf_G92dckjlpxoCAIMQAvD_BwE&gclsrc=aw.ds), [IBM Cloud](https://cloud.ibm.com/registration) and a host of other platforms that you might otherwise have to pay for. My motto is do what is best for your learning experience!
+[Multipass](https://multipass.run/) is a CLI tool, built by Canonical, in order to generate cloud-based Ubuntu VMs on a Linux, MacOS or Windows machine. Depending on the size of the underlying infrastructure you can quickly build out a local mini-cloud. This is a great way to practice development with Kubernetes ecosystem on a budget. Or to simply deploy and test your application code in different environments. Other options include [AWS](https://portal.aws.amazon.com/billing/signup?refid=em_127222&redirect_url=https%3A%2F%2Faws.amazon.com%2Fregistration-confirmation#/start/email), [Azure](https://azure.microsoft.com/en-us/free/search/?ef_id=_k_CjwKCAiAjrarBhAWEiwA2qWdCPW1oFMX8yFDQGIUHnvArjt4XP_giNV0HIFIYAl0nSDK6Da6FIPcoxoC2V0QAvD_BwE_k_&OCID=AIDcmmfq865whp_SEM__k_CjwKCAiAjrarBhAWEiwA2qWdCPW1oFMX8yFDQGIUHnvArjt4XP_giNV0HIFIYAl0nSDK6Da6FIPcoxoC2V0QAvD_BwE_k_&gad_source=1&gclid=CjwKCAiAjrarBhAWEiwA2qWdCPW1oFMX8yFDQGIUHnvArjt4XP_giNV0HIFIYAl0nSDK6Da6FIPcoxoC2V0QAvD_BwE), [GCP](https://cloud.google.com/free?utm_source=google&utm_medium=cpc&utm_campaign=na-US-all-en-dr-bkws-all-all-trial-e-dr-1605212&utm_content=text-ad-none-any-DEV_c-CRE_665665924741-ADGP_Hybrid+%7C+BKWS+-+MIX+%7C+Txt_Google+Cloud+Free-KWID_43700077224933019-kwd-886545049102&utm_term=KW_gcp%20free%20account-ST_gcp+free+account&gad_source=1&gclid=CjwKCAiAjrarBhAWEiwA2qWdCD_OFhSy3ihdoKlgLzwWUXV81n_kRJJIXCae-v1ivhf_G92dckjlpxoCAIMQAvD_BwE&gclsrc=aw.ds), [IBM Cloud](https://cloud.ibm.com/registration) and a host of other platforms that you might otherwise have to pay for. My motto is do what is best for your learning experience!
 
 ## Multipass Installation
-In my current setup, I am using MacOS on a M2 device. So understand that there may arise an instance where certain configurations or changes need to be made regarding your own setup. Follow the installation process for your workstation OS:
+In my current setup, I am using MacOS on a M2 device. Understand that there may arise an instance where certain configurations or changes need to be made regarding your own setup. Follow the installation process for your workstation's OS:
 
 ### MACOS 
-The steps for MacOS were are listed under the assumption that you have [Brew installed](https://brew.sh/). If you do not, you can see what this package manager is about and download it to simplify your life. Thank me later! If you would rather use the install manager, then you can visit [this page](https://multipass.run/docs/installing-on-macos) for more guidance.
+The steps for MacOS were are listed under the assumption that you have [Brew installed](https://brew.sh/). If you do not, you can learn more about the package manager and download it to simplify your installation workflow. Thank me later! If you would rather use the install manager, then you can visit [this page](https://multipass.run/docs/installing-on-macos) for more guidance.
 
 1. `brew install --cask multipass`
 
 ## MicroK8s Installation
-For this scenario we are going to utilize MicroK8s for the Kubernetes installation. You can also use K3s or toy around with the lastest upstream Kubernetes release. For resource consumption purposes coupled with wanting something that maintains similar functionality to upstream Kubernetes releases, Microk8s was the best option.
+In this scenario we are going to utilize MicroK8s for the Kubernetes installation. You can use K3s and other Kubernetes based solutions for container orchestration, or explore the lastest upstream Kubernetes release to deploy your own cluster on infrastructure available to you. For resource consumption purposes coupled with wanting something that maintains similar functionality to upstream Kubernetes releases, Microk8s was the best and most simple option.
 
 ### MAC OS
 ```
@@ -29,7 +29,7 @@ For Windows operating systems, you can view the following [document](https://mic
 For Ubuntu operating systems, you can use the following [document](https://microk8s.io/docs/getting-started) for installation. 
 
 ## Creating Your Multi-Node Cluster
-During the Microk8s installation process we created a singular, or control plane node and/or multipass vm, which runs the Kubernetes services required to ensure our cluster is in a healthy state. If you run `multipass list` you should see VM instance display. We will use this instance as our control plane node. The cluster still requires additional instances, or worker nodes, to connect to the control plane node. 
+During the Microk8s installation process we created a single node, or control plane node and/or multipass vm, which runs the Kubernetes services required to ensure our cluster is in a healthy state to schedule and manage workloads in the cluster. If you run `multipass list` you should see VM instance display. We will use this instance as our control plane node. The cluster still requires additional instances, or worker nodes, to connect to the control plane node. 
 
 ![multipass list command output for control plane node](assets/images/control_plane.png)
 
@@ -77,7 +77,7 @@ During the Microk8s installation process we created a singular, or control plane
     // Repeat the steps in step 2 on the remaining worker node
 
 ### Joining Your Nodes to Your Cluster
-Now that we have created multiple VMs, which represents nodes, we need to join them together so that the orchestration layers is aware of what underlying infrastructure makes up the cluster, to deploy your containerized images to. For more information on this process or if you run into any issues, you can review the following [page](https://microk8s.io/docs/clustering). 
+Now that we have created multiple VMs, which represents nodes in our cluster, we need to join them together so that the orchestration layer is aware of the underlying infrastructure which creates the cluster where your containerized images are deployed to. For more information on this process or if you run into any issues, you can review the following [page](https://microk8s.io/docs/clustering). 
 
 1. You will need to join the nodes by first generating a token on the control-plan node. In order to do so, shell into the control plane node:
     
@@ -87,7 +87,7 @@ Now that we have created multiple VMs, which represents nodes, we need to join t
 
     a. `microk8s add-node`
 
-3. Shell into the first work node using the command from step 1 of this section, and run the command provided in step 2. Ensure that you use the correct command, as the first is for an additional control-plane node and the second is for a worker node.
+3. Shell into the first worker node using the command from step 1 of this section, and run the command provided in step 2. Ensure that you use the correct command, as the first is for an additional control-plane node and the second is for a worker node.
 
     a. `microk8s join 192.168.64.3:25000/ab457d9a2933d63e17db7a738a17135f/846dbb6ca6a4 --worker`
 
@@ -103,7 +103,7 @@ Now that we have created multiple VMs, which represents nodes, we need to join t
 
 
 ## Configuring Add-Ons for Your Cluster
-Microk8s provides the ability to enable standard services to extend or add additional cloud native capabilities in your cluster. Follow the below steps to enable add-ons appropriate for your use case. 
+Microk8s provides the ability to enable standard services to extend or add additional cloud native capabilities in your cluster. Follow the below steps to enable add-ons appropriate for your use case. Add-ons such as some networking and storage capabilities are a must but other capabilities are not. In most environment you will see much, if not all, deployed to a cluster. In test, development, or a local laptop setup, you may see only the necessary functionality that enables the individual's use case.
 
 1. You can view the following [link](https://microk8s.io/docs/addons) to determine the list of add-ons available or you can execute the following command to view the list in your terminal. 
     
@@ -181,9 +181,9 @@ Note: Two things to note here, I am using an alias since the microk8s kubectl co
     a. `curl 10.152.183.164:8080` // this is the IP address assigned to the service and the port it has configured.
 
 ### Validating Storage Configuration (Optional)
-Depending on the specific use case for your cluster, you might want to enable to storage addon to test or practice working with [persistent volumes and persistent volume claims](https://kubernetes.io/docs/concepts/storage/persistent-volumes/). Multipass has a few storage configurations to use, however for testing purposes we will enable the storage class functionality that utilizes the host directory. 
+Depending on the specific use case for your cluster, there may arise a need to enable the storage addon to test or practice working with [persistent volumes and persistent volume claims](https://kubernetes.io/docs/concepts/storage/persistent-volumes/). Multipass has a few storage configurations to use, however for testing purposes we will use the NFS storage option. This feature relies on the NFS protocol and allows for your applications or workloads to access local files and directories on a remote workstation.
 
-1. Enable this option in microk8s
+1. We will first need to exec the individual workstation and install an NFS kernel. This step is following microk8s guidelines.
 
     a. `mk enable hostpath-storage`
 
